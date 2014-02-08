@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block pageTitle %}
+  <CENTER><h3> Management Menu</h3></CENTER>
+{% endblock %}
+
+{% block pageBody %}
+
+	 <CENTER>
+	 	<table>
+	 	
+  		   
+	  <tr><td><a href="{% url 'mysite.addCourse.views.addCourse' %}" style="text-decoration: none"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Course</a></td></tr>
+	  <tr><td><a href="{% url 'add_friend_course'  %}" style="text-decoration: none"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enroll Course</a></td></tr>
+	
+	   </table> 
+ 	 </CENTER>
+
+{% endblock %}
+

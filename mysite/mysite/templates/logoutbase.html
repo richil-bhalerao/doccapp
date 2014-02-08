@@ -1,0 +1,26 @@
+<html>
+
+<head>
+	<title> Course Management System </title>
+	<CENTER> <h2> Course Management System </h2> </CENTER>
+	<div align='right'>
+		<p> <div><b> Welcome</b> {{userId}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><a href="{% url 'mysite.users.views.logout' %}" style="text-decoration: none"> &nbsp; logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>
+		<div align='left'>
+			<a href="{% url 'mysite.users.views.login_view' %}" style="text-decoration: none"> &nbsp; Login</a> &nbsp; {% block pageNavigation %}   {% endblock %}
+		</div>
+	</div>
+	<hr size=5 width="100%">
+	 
+</head>
+
+<body>
+	 <div> {% block pageTitle %}   {% endblock %} </div>
+	 <div> {% block pageBody %} {% endblock %} </div>
+</body>
+
+<footer>
+   <hr size=5 width="100%">
+   <CENTER> <font size=3> &copy; 2013-2014  by  Nikhil,Ruchil, Spandana, Suma.  All rights reserved </font></CENTER>
+</footer>
+
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block pageTitle %}
+  <CENTER><h3> {{title}} </h3></CENTER>
+{% endblock %}
+
+{% block pageBody %}
+	 <CENTER>
+		<p>{{message}}</p>
+	</CENTER>
+		<br>
+		<a href={{forwardToUrl}}> {{forwardToText}} </a> 
+	
+{% endblock %}
+

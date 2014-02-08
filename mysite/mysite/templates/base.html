@@ -1,0 +1,26 @@
+<html>
+
+<head>
+	<title> Course Management System </title>
+	<CENTER> <h2> Distributed Open Collaborative Course </h2> </CENTER>
+	<div align='right'>
+		<p> <div><b> Welcome</b> {{userId}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><a href="{% url 'mysite.users.views.logout' %}" style="text-decoration: none"> &nbsp; logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>
+		<div align='left'>
+			<a href="{% url 'mysite.users.views.index' %}" style="text-decoration: none"> &nbsp; Home</a> &nbsp; {% block pageNavigation %}   {% endblock %}
+		</div>
+	</div>
+	<hr size=5 width="100%">
+	 
+</head>
+
+<body>
+	 <div> {% block pageTitle %}   {% endblock %} </div>
+	 <div> {% block pageBody %} {% endblock %} </div>
+</body>
+
+<footer>
+   <hr size=5 width="100%">
+   <CENTER> <font size=3> &copy; 2014  Rohit,Richil,Roopak. </font></CENTER>
+</footer>
+
+</html>
