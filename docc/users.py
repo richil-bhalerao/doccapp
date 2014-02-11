@@ -9,7 +9,7 @@ import traceback
 class Users(object): 
     
     def __init__(self):
-        print 'User created'
+        print 'User created\n'
         # create storag 
         self.__store = Storage()
         

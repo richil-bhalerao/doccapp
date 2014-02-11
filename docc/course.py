@@ -11,7 +11,7 @@ from bson.objectid import ObjectId
 class Course(object):
     
     def __init__(self):
-        print 'Course created'
+        print 'Course created\n'
         # create storag 
         self.__store = Storage()
         
