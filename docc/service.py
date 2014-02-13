@@ -21,6 +21,7 @@ import json
 from inspect import trace
 from bson.objectid import ObjectId
 from json import JSONEncoder
+from pymongo import *
 
 
 
@@ -28,16 +29,41 @@ courseobj = None
 userobj = None
 
 
+status = None
+
+# A Mongo db JSON Encoder 
+class MongoEncoder(JSONEncoder):
+    def default(self, obj, **kwargs):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        else:
+            return JSONEncoder.default(obj, **kwargs)
+
+# Displaying welcome 
+@route('/')
+def root():
+   return 'welcome'
+   
 def setup():
    print '\n**** service initialization ****\n'
-   global courseobj, userobj  
+   global courseobj, userobj 
+   userobj = Users() 
    
-   courseobj = Course()
-   userobj = Users()
    
+@route('/register', method='POST')
+def create_user(): 
+    print 'Bottle: in create user'
+    user=''
+    entity = request.body.read()
+    user = json.loads(entity)
+    print user
+    print '----'
+    status = userobj.addUser(user)
+    print "----"
+    print status
+    return status
 
-
-@route('/course', method='POST')
+@route('/Course', method='POST')
 def add_course():
     print 'You are in add_course service'
     data = request.body.read()

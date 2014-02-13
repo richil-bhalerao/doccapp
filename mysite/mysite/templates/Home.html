@@ -1,14 +1,96 @@
-l{% extends "base.html" %}
+<html style="" class="" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta charset="utf-8">
+  <title>DOCC Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script type="text/pingendo-javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/pingendo-javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+  
+  <body class=""><div class="navbar navbar-default navbar-inverse navbar-static-top">
+    <style>
+      .body{padding-top:70px}
+    </style>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="#">Home</a>
+          </li>
+          <li class="active">
+            <a href="#">About Us</a>
+          </li>
+        </ul>
+        <a type="button" class="btn btn-default navbar-btn navbar-right">Sign in</a>
+      </div>
+    </div>
+  </div><div class="container">
+    <div class="jumbotron text-right">
+      <h1>DOCC</h1>
+      <p class="lead text-danger">Distributed Open Collaborative Course
+        <br>
+      </p>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="http://lorempixel.com/1920/600/nightlife/5">
+            <div class="carousel-caption">
+              <h2>Distributed - Collaborative - Gamification
+                <br>
+              </h2>
+              <p><b>Start Learning Now<br></b>
 
-{% block pageTitle %}
-  <CENTER><h3> Welcome to DOCC</h3></CENTER>
-{% endblock %}
-
-{% block pageBody %}
-
-	 <CENTER>
-	 	<h1> This site is under maintenance </h1> 
- 	 </CENTER>
-
-{% endblock %}
-
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+      <a class="btn btn-large btn-lg btn-primary" href="/register">
+        <span class="glyphicon glyphicon-star"></span>Sign Up</a>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Explore Courses
+          <br>
+        </h2>
+        <p>Explore all the courses that you want to learn. We have fantastic database course
+          content that can make you go SQL in a few days. Flexible course content, learn
+          at your own speed, collaborate with others and get going with your course work.
+          <br>
+        </p>
+        <a class="btn btn-primary" href="#">View details</a>
+      </div>
+      <div class="col-md-4">
+        <h2>Learn how it works
+          <br>
+        </h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+          commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <a class="btn btn-primary" href="#">View details</a>
+      </div>
+      <div class="col-md-4">
+        <h2>Collaborative</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+          commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <a class="btn btn-primary" href="#">View details</a>
+      </div>
+    </div>
+  </div></body></html>

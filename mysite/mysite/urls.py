@@ -11,8 +11,9 @@ urlpatterns = patterns('',
     (r'^login/$','mysite.users.views.login_view'),
     (r'^index/$','mysite.users.views.index'),
     (r'^logout/$','mysite.users.views.logout'),
-    
-    # Uncomment the admin/doc line below to enable admin documentation:
+    (r'^course/$','mysite.users.views.addcourse'),
+     (r'^register/$','mysite.users.views.createUser'),
+    # Uncomment the admin/doc line below to e(r'^register/$','mysite.users.views.createUser'),nable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
 
