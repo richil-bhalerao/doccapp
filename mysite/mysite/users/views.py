@@ -91,7 +91,7 @@ def createUser(request):
       print status.status_code
       if(status.status_code==200):  
          print status  
-         return HttpResponseRedirect('http://yahoo.com')
+         return render_to_response('Home.html',context_instance=RequestContext(request))
       else:
          status = 401 
          return HttpResponseRedirect('http://google.com')

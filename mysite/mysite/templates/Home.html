@@ -31,7 +31,15 @@
             <a href="#">About Us</a>
           </li>
         </ul>
-        <a type="button" class="btn btn-default navbar-btn navbar-right">Sign in</a>
+        <a type="button" id="signin" class="btn btn-default navbar-btn navbar-right">Sign in</a>
+         <script src="{{STATIC_URL}}bootbox.min.js"></script>
+<script>
+$(document).on("click", ".signin", function(e) {
+bootbox.alert("Hello world!", function() {
+console.log("Alert Callback");
+});
+});
+</script>
       </div>
     </div>
   </div><div class="container">
