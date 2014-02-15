@@ -1,8 +1,6 @@
 """
 6, Apr 2013
 
-@richil
-
 """
 
 import time
