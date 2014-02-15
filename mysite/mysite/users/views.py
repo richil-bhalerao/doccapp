@@ -8,8 +8,8 @@ from django.http import *
 def index(request):
    # val=request.GET['va']
     #print val
-    uname=request.session['uid']
-    return render_to_response('Home.html', {'userId': uname})
+    #uname=request.session['uid']
+    return render_to_response('Home.html')
 
 def login_view(request):
 

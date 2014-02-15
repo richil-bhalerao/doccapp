@@ -7,9 +7,10 @@
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <script type="text/pingendo-javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/pingendo-javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+ 
 </head>
   
-  <body class=""><div class="navbar navbar-default navbar-inverse navbar-static-top">
+  <body class=""><div class="navbar navbar-default navbar-inverse navbar-static-top">  
     <style>
       .body{padding-top:70px}
     </style>
@@ -31,15 +32,18 @@
             <a href="#">About Us</a>
           </li>
         </ul>
-        <a type="button" id="signin" class="btn btn-default navbar-btn navbar-right">Sign in</a>
-         <script src="{{STATIC_URL}}bootbox.min.js"></script>
-<script>
-$(document).on("click", ".signin", function(e) {
-bootbox.alert("Hello world!", function() {
-console.log("Alert Callback");
-});
-});
-</script>
+        <a type="button" id="signin" class="btn btn-default navbar-btn navbar-right" href=#>Sign in</a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+       {% load staticfiles %}
+       <script src="{% static "bootstrap.min.js" %}"></script>
+        <script src="{% static "bootbox.js" %}"></script>
+		<script>
+		$(document).ready(function(){
+    		$('#signin').on('click',function(){
+        		bootbox.alert("Hello world!");
+			});
+		});
+		</script>
       </div>
     </div>
   </div><div class="container">
