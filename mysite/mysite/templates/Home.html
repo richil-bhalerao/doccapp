@@ -38,9 +38,20 @@
        <script src="{% static "bootstrap.min.js" %}"></script>
         <script src="{% static "bootbox.js" %}"></script>
 		<script>
-		$(document).ready(function(){
-    		$('#signin').on('click',function(){
-        		bootbox.alert("Hello world!");
+		$('#signin').on('click',function(){
+    		bootbox.dialog({
+  				message: "Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input>",
+  				
+  				title: "Sign In",
+  				buttons: {
+    				main: {
+      					label: "Submit",
+      					className: "btn-primary",
+      					callback: function() {
+        					alert('Hola');
+      					}
+    				}
+  				}
 			});
 		});
 		</script>
