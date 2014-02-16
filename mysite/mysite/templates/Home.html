@@ -32,29 +32,30 @@
             <a href="#">About Us</a>
           </li>
         </ul>
-        <a type="button" id="signin" class="btn btn-default navbar-btn navbar-right" href=#>Sign in</a>
+        <a type="button" id="signin" class="btn btn-default navbar-btn navbar-right" href=##>Sign in</a>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
        {% load staticfiles %}
        <script src="{% static "bootstrap.min.js" %}"></script>
         <script src="{% static "bootbox.js" %}"></script>
-		<script>
-		$('#signin').on('click',function(){
-    		bootbox.dialog({
-  				message: "Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input>",
-  				
-  				title: "Sign In",
-  				buttons: {
-    				main: {
-      					label: "Submit",
-      					className: "btn-primary",
-      					callback: function() {
-        					alert('Hola');
-      					}
-    				}
-  				}
-			});
-		});
-		</script>
+        <script>
+        $('#signin').on('click',function(){
+            bootbox.dialog({
+                  message: "<form id='SignIn' method='GET' action='http://127.0.0.1:8000/signIn/'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input></form>",
+                 
+                  title: "Sign In",
+                  buttons: {
+                    main: {
+                          label: "Submit",
+                          className: "btn-primary",
+                          callback: function() {
+                            $('#SignIn').submit();
+                          }
+                    }
+                  }
+            });
+        });
+        </script>
+
       </div>
     </div>
   </div><div class="container">

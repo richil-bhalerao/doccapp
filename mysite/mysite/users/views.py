@@ -15,35 +15,20 @@ def login_view(request):
 
     state = "Please login below..."
     username = password = ''
-    if request.POST:
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print username;
-        print password;
-        user = authenticate(username=username, password=password)
-        print user
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                state = "You're successfully logged in!"
-                status=True
-                print "logged in"
-            else:
-                state = "Your account is not active, please contact the site admin."
-                status=False
-                print "incorrect login"
-        else:
-            state = "Your username and/or password were incorrect." 
-            status=False          
-        if(status):
-            request.session['uid']=username
-            return render_to_response('Home.html',{'state':state, 'username': username},context_instance=RequestContext(request))
-        else:
-            return render_to_response('auth.html',{'state':state, 'username': username},context_instance=RequestContext(request))
-    else:
-        return render_to_response('auth.html',{'state':state, 'username': username},context_instance=RequestContext(request))
+    payload=''
+    headers=''
+    headers = {'content-type': 'application/json'}
 
-          
+    username = request.GET.get('username')
+    password = request.GET.get('password')
+    print username;
+    print password;
+    encryptedPassword = base64.b64encode(password)
+    payload = {"username":username,"password":encryptedPassword}
+    print payload
+    status=requests.get(url='http://127.0.0.1:8080/signIn',data=json.dumps(payload), headers=headers)
+    return render_to_response('auth.html',{'state':state, 'username': username},context_instance=RequestContext(request))
+
 def logout(request):
     try:
         del request.session['uid']

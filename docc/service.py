@@ -61,6 +61,17 @@ def create_user():
     print status
     return status
 
+@route('/signIn', method='GET')
+def signIn():
+    print 'Almost getting there..'
+    user=''
+    entity = request.body.read()
+    user = json.loads(entity)
+    print user['password']
+    status = userobj.getUser(user)
+    print status
+    return 'signIn info'
+
 @route('/Course', method='POST')
 def add_course():
     print 'You are in add_course service'
