@@ -84,8 +84,35 @@
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       </div>
-      <a class="btn btn-large btn-lg btn-primary" href="/register">
+      <a id="signUp" class="btn btn-large btn-lg btn-primary" href="#">
         <span class="glyphicon glyphicon-star"></span>Sign Up</a>
+        <script>
+		$('#signUp').on('click',function(){
+    		bootbox.dialog({
+  				message: "<center> <form id='register' method='POST' action='http://127.0.0.1:8000/register/' onsubmit='alert('Registration Complete. You can sign in now!')'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input><br><br>First Name:<br><input type='text' name='fname'></input><br><br>Last Name:<br><input type='text' name='lname'></input><br><br>Email Id:<br><input type='text' name='email'></input></form></center>",
+  				title: "Sign Up",
+  				
+  				buttons: {
+    				 success: {
+					label: "Sign Up!",
+					className: "btn-success",
+					callback: function(result) {
+					if(result)
+					alert("Sign Up complete. Now you can Sign In!");
+					$('#register').submit();
+					}
+					},
+					danger: {
+					label: "Cancel!",
+					className: "btn-danger",
+					callback: function() {
+					Example.show("uh oh, look out!");
+					}
+					}
+  				}
+			}).addClass();
+		});
+		</script>
     </div>
     <div class="row">
       <div class="col-md-4">
