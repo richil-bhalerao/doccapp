@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html style="" class="" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>DOCC Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js"></script>
+  </head>
+  
+  <body class="">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="navbar navbar-default navbar-fixed-top">
+            <style>
+              .body{padding-top:70px}
+            </style>
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-left navbar-nav">
+                  <li class="active"> <a href="#">About</a>
+
+                  </li>
+                  <li class="active"> <a href="#">Contact Us</a>
+
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="jumbotron text-left">
+        <hr>
+        <table width="100%">
+          <tbody></tbody>
+        </table>
+        
+      </div>
+      <div class="row">
+        <div class="col col-md-10">
+          <blockquote>
+            <p class="text-primary" style="font-size:30px;"> Distributed Open Collaborative Course
+              <br>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-12">
+          <div class="jumbotron">
+            <h1>Oops... Unsuccessful login
+              <br>
+            </h1>
+            <p>Please try again
+              <br>
+            </p>
+            <p><a id="LoginAgain" class="btn btn-primary btn-large">Login again</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-12">
+          <hr class="visible-lg">
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+  <script>
+    $('#LoginAgain').on('click',function(){
+        bootbox.dialog({
+              message: "<form id='SignIn' method='GET' action='http://127.0.0.1:8000/signIn/'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input></form>",
+             
+              title: "Sign In",
+              buttons: {
+                main: {
+                      label: "Submit",
+                      className: "btn-primary",
+                      callback: function() {
+                        $('#SignIn').submit();
+                      }
+                }
+              }
+        });
+    });
+  </script>
+  </body>
+
+</html>

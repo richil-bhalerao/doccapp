@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html style="" class="" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>DOCC Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js"></script>
+  </head>
+  
+  <body class="">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="navbar navbar-default navbar-fixed-top">
+            <style>
+              .body{padding-top:70px}
+            </style>
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-left navbar-nav">
+                  <li class="active"> <a href="#">About</a>
+
+                  </li>
+                  <li class="active"> <a href="#">Contact Us</a>
+
+                  </li>
+                </ul> <a type="button" id="signin" class="btn btn-lg btn-primary navbar-btn navbar-right"
+                href="##">Login</a>
+                <script>
+                  $('#signin').on('click',function(){
+                      bootbox.dialog({
+                            message: "<form id='SignIn' method='GET' action='http://127.0.0.1:8000/signIn/'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input></form>",
+                           
+                            title: "Sign In",
+                            buttons: {
+                              main: {
+                                    label: "Submit",
+                                    className: "btn-primary",
+                                    callback: function() {
+                                      $('#SignIn').submit();
+                                    }
+                              }
+                            }
+                      });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="jumbotron text-left">
+        <hr>
+        <table width="100%">
+          <tbody>
+            <tr>
+              <td valign="top" align="left" width="50%">
+                <div class="hero-unit">
+                  <h2 class="text-info">Distributed Open Collaborative Course</h2>
+                  <!--<p style="font-size:15px;">This is an attempt to make learning a collaborative practice in a way that teaching is not just from a professor to a student or the uninformed masses, but expertise is distributed across the network. The concept here is - ‘TO GIVE WHAT YOU TAKE’. Emphasis is more on collaboration and connected knowledge rather than the proprietary singular knowledge transfer in MOOCs. </p>-->
+                  <br>
+                  <br>
+                  <br>
+      
+                  <p> <a id="signUp" style="-moz-user-select: text;" class="btn btn-large btn-lg btn-primary" contenteditable="true">
+                Register Now
+              </a>
+
+                  </p>
+                </div>
+              </td>
+              <td align="right">
+                <img src="https://lh3.googleusercontent.com/-aa1S6oaL-l0/UwFVkL8nneI/AAAAAAAAAqg/ZQSaaVF3k40/w362-h394-no/docc.png"
+                class="img-responsive img-rounded">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!--<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="http://lorempixel.com/1920/600/nightlife/5">
+              <div class="carousel-caption">
+                <h2>Distributed - Collaborative - Gamification
+                  <br>
+                </h2>
+                <p><b>Start Learning Now<br></b>
+
+                </p>
+              </div>
+            </div>
+          </div> <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+ <a class="right carousel-control" href="#carousel-example-generic"
+          data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+
+        </div>-->
+        <script>
+          $('#signUp').on('click',function(){
+              		bootbox.dialog({
+            				message: "<center> <form id='register' method='POST' action='http://127.0.0.1:8000/register/' onsubmit='alert('Registration Complete. You can sign in now!')'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input><br><br>First Name:<br><input type='text' name='fname'></input><br><br>Last Name:<br><input type='text' name='lname'></input><br><br>Email Id:<br><input type='text' name='email'></input></form></center>",
+            				title: "Sign Up",
+            				
+            				buttons: {
+              				 success: {
+          					label: "Sign Up!",
+          					className: "btn-success",
+          					callback: function(result) {
+          					if(result)
+          					alert("Sign Up complete. Now you can Sign In!");
+          					$('#register').submit();
+          					}
+          					},
+          					danger: {
+          					label: "Cancel!",
+          					className: "btn-danger",
+          					callback: function() {
+          					Example.show("uh oh, look out!");
+          					}
+          					}
+            				}
+          			}).addClass();
+          		});
+        </script>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>What is DOCC?
+            <br>
+          </h2>
+          <p>Explore all the courses that you want to learn. We have fantastic database course
+            content that can make you go SQL in a few days. Flexible course content, learn
+            at your own speed, collaborate with others and get going with your course work.
+            <br>
+          </p> <a class="btn btn-primary" href="#">View details</a>
+
+        </div>
+        <div class="col-md-4">
+          <h2>How it works?
+            <br>
+          </h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+            commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p> <a class="btn btn-primary"
+          href="#">View details</a>
+
+        </div>
+        <div class="col-md-4">
+          <h2>Why should you register?
+            <br>
+          </h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+            commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p> <a class="btn btn-primary"
+          href="#">View details</a>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-12">
+          <hr class="visible-lg">
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </body>
+
+</html>

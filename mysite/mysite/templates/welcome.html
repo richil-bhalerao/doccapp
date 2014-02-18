@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html style="" class="" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>DOCC Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js"></script>
+  </head>
+  
+  <body class="">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="navbar navbar-default navbar-fixed-top">
+            <style>
+              .body{padding-top:70px}
+            </style>
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-left navbar-nav">
+                  <li class="active"> <a href="#">About</a>
+
+                  </li>
+                  <li class="active"> <a href="#">Contact Us</a>
+
+                  </li>
+                </ul> <!--<a type="button" id="signin" class="btn btn-lg btn-primary navbar-btn navbar-right"
+                href="##">Login</a>-->
+
+                <ul class="nav navbar-right navbar-nav">
+                  <li class="inactive"> <a href="#">Course</a></li>
+                  <li class="inactive"> <a href="#">Blog</a></li>
+                  <li class="inactive"> <a href="#">Help</a></li>
+                </ul>
+
+                <div class="btn-group btn-lg navbar-right">
+                  <button type="button" class="btn btn-primary">My Profile</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">Course settings</a></li>
+                    <li class="divider"></li>
+                    <li><a id="logout" href="http://127.0.0.1:8000/logout/">Log Out</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+  <div class = "container">
+    <h3><small class="text-primary"><b>Welcome {{user.fname}}!</b></small></h3>
+    <div class="well well-sm">
+        <h1 class="text-primary"><center>Dashboard </center></h1>
+    </div> 
+
+    <div class="col col-md-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          <strong>User profile</strong>
+        </a>
+        <a href="#" class="list-group-item">Email: {{user.email}}</a>
+        <a href="#" class="list-group-item">First Name: {{user.fname}}</a>
+        <a href="#" class="list-group-item">Last Name: {{user.lname}}</a>
+      </div>
+    </div>
+
+    <div class=""
+
+  </div
+
+    <br>
+    <br>
+
+                <script>
+                  $('#logout').on('click',function(){
+
+                      window.location.href = 'http://127.0.0.1:8000/logout/'  
+                    });
+                  });
+                </script>
+
+  </body>
+
+</html>
