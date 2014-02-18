@@ -23,7 +23,7 @@ class Storage(object):
        connection = Connection('localhost', 27017)
        #Create db object only if it is not created 
        if self.db is None:
-           self.db = connection.moocdb
+           self.db = connection.doccdb
        #Ric End
     
     
@@ -32,7 +32,7 @@ class Storage(object):
         print 'In Storage.add method'
         try:
             return self.db[collection].save(data)
-            print 'data added in moocdb'
+            print 'data added in doccdb'
         except:
             traceback.print_exc() 
             return "Error: Data cannot be added"
@@ -40,7 +40,7 @@ class Storage(object):
     def get(self, collection, fieldname, value):
         print 'In Storage.get method'
         try:
-            return self.db[collection].find_one({fieldname:value}) #, {'_id':0})
+            return self.db[collection].find_one({fieldname:value}, {'_id':0})
         except:
             traceback.print_exc() 
             return "Error: Data cannot be retrieved"
@@ -121,3 +121,5 @@ class Storage(object):
        else:
           return None
      
+
+

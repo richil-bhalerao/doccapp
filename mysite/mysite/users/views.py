@@ -4,12 +4,13 @@ from django.template import RequestContext
 from models import moocsList,ipaddress,registerUser
 import json, requests, base64
 from django.http import *
+import urllib2, urllib
 
 def index(request):
    # val=request.GET['va']
     #print val
     #uname=request.session['uid']
-    return render_to_response('Home.html', context_instance=RequestContext(request))
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 def login_view(request):
 
@@ -21,20 +22,26 @@ def login_view(request):
 
     username = request.GET.get('username')
     password = request.GET.get('password')
-    print username;
-    print password;
+    
     encryptedPassword = base64.b64encode(password)
     payload = {"username":username,"password":encryptedPassword}
-    print payload
-    status=requests.get(url='http://127.0.0.1:8080/signIn',data=json.dumps(payload), headers=headers)
-    return render_to_response('auth.html',{'state':state, 'username': username},context_instance=RequestContext(request))
+    
+    status=requests.put(url='http://127.0.0.1:8080/signIn', data=json.dumps(payload), headers=headers)
+    jsonData = status.json()
+    result = jsonData['result']
+    if result==False:
+        return render_to_response('loginfailed.html',{'state':"Username or password is invalid", 'username': username},context_instance=RequestContext(request))
+    else:
+        #request.session['session']
+        return render_to_response('welcome.html',{'state':"User logged in successfully", 'user': jsonData['payload']},context_instance=RequestContext(request))
 
 def logout(request):
     try:
-        del request.session['uid']
+        print 'hi'
+        #del request.session['uid']
     except KeyError:
         pass
-    return render_to_response('Logout.html',context_instance=RequestContext(request))
+    return render_to_response('index.html',context_instance=RequestContext(request))
 
 
 def createUser(request):

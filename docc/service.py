@@ -13,7 +13,8 @@ from bottle import request, response, route, run, template, abort
 
 import traceback
 from course import Course
-from users import Users
+from user import Users
+from session import Session
 
 import json
 from inspect import trace
@@ -25,7 +26,7 @@ from pymongo import *
 
 courseobj = None
 userobj = None
-
+sessionobj = None
 
 status = None
 
@@ -40,12 +41,22 @@ class MongoEncoder(JSONEncoder):
 # Displaying welcome 
 @route('/')
 def root():
-   return 'welcome'
+    cookie = request.get_cookie("session")
+    print 'cookie: ', cookie
+    username = sessionobj.get_username(cookie)
+    if username is None:
+        return 'User not logged in'
+    else:
+        return 'Hi and Welcome: ', username
+    
    
 def setup():
    print '\n**** service initialization ****\n'
-   global courseobj, userobj 
-   userobj = Users() 
+   global courseobj, userobj, sessionobj 
+   userobj = Users()
+   
+   connection = Connection('localhost', 27017)
+   sessionobj = Session(connection.doccdb) 
    
    
 @route('/register', method='POST')
@@ -61,16 +72,24 @@ def create_user():
     print status
     return status
 
-@route('/signIn', method='GET')
+@route('/signIn', method='PUT')
 def signIn():
-    print 'Almost getting there..'
-    user=''
+    print 'Checking if user exists..'
     entity = request.body.read()
-    user = json.loads(entity)
-    print user['password']
-    status = userobj.getUser(user)
-    print status
-    return 'signIn info'
+    entity = json.loads(entity)
+    print "username:", entity['username']
+    user = userobj.getUser(entity['username'])
+    print "user returned: ",  user
+    if user!=None and user['password']==entity['password']:
+        
+        #Also set session id in the browser cookie
+        session_id = sessionobj.start_session(user['username'] )
+        response.set_cookie("session", session_id)
+        data = {"result": True, "payload": user}
+    else:
+        data = {"result": False}
+    
+    return MongoEncoder().encode(data)
 
 @route('/Course', method='POST')
 def add_course():
