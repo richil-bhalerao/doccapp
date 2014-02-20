@@ -71,4 +71,11 @@ def createUser(request):
    # Get all posts from DB
    return render_to_response('Home.html', {'user': payload},
                              context_instaindexnce=RequestContext(request))
+   
+def courseContentSelection(request):
+    print 'Django: In course content selection page'
+    status = requests.get(url='http://127.0.0.1:8080/courseContentSelection')
+    print status.json()
+    data = status.json()
+    return render_to_response('courseContentSelection.html', {'data':data}, context_instance=RequestContext(request))
         

@@ -54,7 +54,7 @@ def setup():
    print '\n**** service initialization ****\n'
    global courseobj, userobj, sessionobj 
    userobj = Users()
-   
+   courseobj = Course()
    connection = Connection('localhost', 27017)
    sessionobj = Session(connection.doccdb) 
    
@@ -90,6 +90,23 @@ def signIn():
         data = {"result": False}
     
     return MongoEncoder().encode(data)
+
+@route('/courseContentSelection', method='GET')
+def courseContentSelection():
+    print 'Bottle: you are in courseContentSelection'
+    try:
+        cursor = courseobj.getAll()
+        entity = [d for d in cursor]
+        print entity
+    except:
+        traceback.print_exc()
+        abort(404, 'courses cannot be retrieved')    
+        
+    if not entity:
+        abort(404, 'No course found')       
+        
+    return  MongoEncoder().encode(entity)
+
 
 @route('/Course', method='POST')
 def add_course():

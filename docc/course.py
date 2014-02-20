@@ -55,7 +55,7 @@ class Course(object):
     def getAll(self):
         print 'In Course.getAll method'
         try:
-            return self.__store.getAll('course')
+            return self.__store.getAll('courseContent')
         except:
             traceback.print_exc()
             return 'failed'
