@@ -70,7 +70,7 @@ def createUser(request):
          print status
    # Get all posts from DB
    return render_to_response('Home.html', {'user': payload},
-                             context_instaindexnce=RequestContext(request))
+                             context_instance=RequestContext(request))
    
 def courseContentSelection(request):
     print 'Django: In course content selection page'
