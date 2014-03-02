@@ -12,6 +12,21 @@ def index(request):
     #uname=request.session['uid']
     return render_to_response('index.html', context_instance=RequestContext(request))
 
+def verilog(request):
+   # val=request.GET['va']
+    #print val
+    #uname=request.session['uid']
+    return render_to_response('output.html', context_instance=RequestContext(request))
+
+def giveOutput(request):
+   # val=request.GET['va']
+    #print val
+    #uname=request.session['uid']
+    input = request.POST.post('input')
+    payload = {"input":input}
+    print input
+    return render_to_response('index.html', context_instance=RequestContext(request))
+
 def login_view(request):
 
     state = "Please login below..."
