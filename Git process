@@ -1,0 +1,32 @@
+
+1) create a repo
+https://help.github.com/articles/generating-ssh-keys
+
+2) 
+=> Create a new repository on the command line
+
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/richil-bhalerao/doccapp.git
+git push -u origin master
+(Before this step u might need to add ssh keys => https://help.github.com/articles/generating-ssh-keys)
+or
+(git remote set-url origin https://richil-bhalerao@github.com/richil-bhalerao/doccapp.git)
+
+
+=> Push an existing repository from the command line
+
+git remote add origin https://github.com/richil-bhalerao/doccapp.git
+git push -u origin master
+
+
+=> 
+    Make your change.
+   1. git add - this stages your changes for committing
+   2. git commit - this commits your staged changes locally
+   3. git push - this pushes your committed changes to a remote
+
+
+
