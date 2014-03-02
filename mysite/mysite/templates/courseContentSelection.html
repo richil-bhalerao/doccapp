@@ -1,0 +1,179 @@
+<html style="-moz-user-select: none;" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ <link rel="stylesheet" href="/resources/demos/style.css">
+<meta charset="utf-8"><title>User Page</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content=""><meta name="author" content=""><link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+$(function() {
+$( "#accordion" ).accordion();
+});
+</script>
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
+</head>
+
+<body class="">
+  <div class="navbar navbar-default navbar-static-top">
+    <style>
+      .body{padding-top:70px}
+    </style>
+   <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-left navbar-nav">
+                
+                  <li class="inactive"> <a href="#">About</a>
+
+                  </li>
+                  <li class="inactive"> <a href="#">Contact Us</a>
+
+                  </li>
+                </ul> <!--<a type="button" id="signin" class="btn btn-lg btn-primary navbar-btn navbar-right"
+                href="##">Login</a>-->
+
+                <ul class="nav navbar-right navbar-nav">
+                <li class="inactive"> <a href="#">Dashboard</a></li>
+                  <li class="inactive"> <a href="#">Course</a></li>
+                   <li class="active"> <a href="http://127.0.0.1:8000/courseContentSelection">Course Content Selection</a></li>
+                  <li class="inactive"> <a href="#">Blog</a></li>
+                  <li class="inactive"> <a href="#">Help</a></li>
+                </ul>
+
+                <div class="btn-group btn-lg navbar-right">
+                  <button type="button" class="btn btn-primary">My Profile</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">Course settings</a></li>
+                    <li class="divider"></li>
+                    <li><a id="logout" href="http://127.0.0.1:8000/logout/">Log Out</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+  </div>
+  <div class="container">
+     <div class = "container">
+    <div class="well well-sm">
+        <h1 class="text-primary"><center>Select your content!</center></h1>
+    </div> 
+    
+    <div  class="row">
+   
+      <div id = "accordion" class="col-md-3">
+         <h3> <b> <i>COURSE CONTENTS </i></b></h3>
+			<div>
+			<p>
+			Chose your contents from the topics below to start your course.
+			</p>
+			</div><h3><b>Introduction to DB</b></h3>
+			<div>
+			<ul>
+			<li><a>List item one</a></li>
+			<li><a>List item two</a></li>
+			<li><a>List item three</a></li>
+			</ul>
+			</div>
+			<h3><b>Basic DB rules</b></h3>
+			<div>
+			<ul>
+			<li><a>List item one</a></li>
+			<li><a>List item two</a></li>
+			<li><a>List item three</a></li>
+			</ul>
+			</div>
+			<h3><b>SQL Querying</b></h3>
+			<div>
+			<ul>
+			<li><a>List item one</a></li>
+			<li><a>List item two</a></li>
+			<li><a>List item three</a></li>
+			</ul>
+			<ul>
+			<li><a>List item one</a></li>
+			<li><a>List item two</a></li>
+			<li><a>List item three</a></li>
+			</ul>
+			</div>
+			<h3><a>What is NoSQL?</a></h3>
+			<div>
+			<ul>
+			<li><a>List item one</a></li>
+			<li><a>List item two</a></li>
+			<li><a>List item three</a></li>
+			</ul>
+			</div>
+      </div>
+      
+      
+      <div class="col col-md-9">
+        <ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#home" data-toggle="tab">View All</a></li>
+  <li><a href="#profile" data-toggle="tab">Most Viewed</a></li>
+  <li><a href="#messages" data-toggle="tab">Best Rated</a></li>
+  <li><a href="#settings" data-toggle="tab">We Suggest..</a></li>
+</ul>
+        <br/>
+        <div class="tab-content">
+  <div class="tab-pane active" id="home"> 
+<ul class="media-list">
+ {%for data in data%}
+  <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="http://www.reviversoft.com/blog/wp-content/uploads/2013/05/Compatibility_Adobe_PDF_Logo.jpg" width="64" height="64">
+    </a>
+    <div class="media-body">
+    
+      <h4 class="media-heading">{{ data.ContentName }} by {{data.Professor}}</h4>
+      <p>{{data.Description}}</p>
+       <p><a href="#" class="btn btn-primary" role="button">Select</a> <a href="#" class="btn btn-default" role="button">Cancel</a></p>
+    </div>
+  </li>
+   {%endfor%}
+</ul>
+</div>
+  <div class="tab-pane" id="profile">
+  <div class="row">
+   {%for data in data%}
+    <div class="thumbnail" style="float: left; width: 33%; height:350px">
+      <img src="http://www.reviversoft.com/blog/wp-content/uploads/2013/05/Compatibility_Adobe_PDF_Logo.jpg" width="100" height="100">
+      <div class="caption">
+      <center>
+        <h3>{{ data.ContentName }}</h3>
+        <h4>Professor: {{data.Professor}} </h4>
+        <p>{{data.Description}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Select</a> </p>
+        <center>
+      </div>
+    </div>
+     {%endfor%}
+
+</div>
+  
+</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
+    </div>
+  </div>
+</body>
