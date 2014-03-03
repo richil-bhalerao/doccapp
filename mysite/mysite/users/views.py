@@ -6,6 +6,8 @@ import json, requests, base64
 from django.http import *
 import urllib2, urllib
 
+#Changes made 
+
 def index(request):
    # val=request.GET['va']
     #print val
