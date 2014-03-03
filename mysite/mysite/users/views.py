@@ -14,24 +14,7 @@ def index(request):
     #uname=request.session['uid']
     return render_to_response('index.html', context_instance=RequestContext(request))
 
-def verilog(request):
-   # val=request.GET['va']
-    #print val
-    #uname=request.session['uid']
-    return render_to_response('output.html', context_instance=RequestContext(request))
-
-def giveOutput(request):
-   # val=request.GET['va']
-    #print val
-    #uname=request.session['uid']
-    input = request.POST.post('input')
-    payload = {"input":input}
-    print input
-    return render_to_response('index.html', context_instance=RequestContext(request))
-
 def login_view(request):
-
-    state = "Please login below..."
     username = password = ''
     payload=''
     headers=''
@@ -47,10 +30,10 @@ def login_view(request):
     jsonData = status.json()
     result = jsonData['result']
     if result==False:
-        return render_to_response('loginfailed.html',{'state':"Username or password is invalid", 'username': username},context_instance=RequestContext(request))
+        return render_to_response('loginfailed.html',{'username': username},context_instance=RequestContext(request))
     else:
         #request.session['session']
-        return render_to_response('welcome.html',{'state':"User logged in successfully", 'user': jsonData['payload']},context_instance=RequestContext(request))
+        return render_to_response('welcome.html',{'user': jsonData['payload']},context_instance=RequestContext(request))
 
 def logout(request):
     try:
