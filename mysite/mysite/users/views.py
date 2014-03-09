@@ -93,13 +93,15 @@ def login_view(request):
         return render_to_response('loginfailed.html',{'state':"Username or password is invalid", 'username': username},context_instance=RequestContext(request))
     else:
         request.session['user'] = jsonData['payload']
-        print 'session --> ', request.session['username']
+        print 'session --> ', request.session['user']
         return render_to_response('welcome.html',{'state':"User logged in successfully", 'user': jsonData['payload']},context_instance=RequestContext(request))
 
 def logout(request):
     try:
         print 'hi'
         del request.session['user']
+        print request.session['user']
+        request.session.flush();
     except KeyError:
         pass
     return render_to_response('index.html',context_instance=RequestContext(request))
