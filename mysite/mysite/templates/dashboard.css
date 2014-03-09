@@ -192,7 +192,7 @@ body {
   margin-top: 5px;
 }
 .hero-widget { text-align: center; padding-top: 20px; padding-bottom: 20px; }
-.hero-widget .icon { display: block; font-size: 45px; line-height: 45px; margin-bottom: 10px; text-align: center; }
+.hero-widget .icon { display: block; font-size: 30px; line-height: 30px; margin-bottom: 10px; text-align: center; }
 .hero-widget var { display: block; height: 20px; font-size: 20px; line-height: 30px; font-style: normal; }
 .hero-widget label { font-size: 10px; }
 .hero-widget .options { margin-top: 10px; }
