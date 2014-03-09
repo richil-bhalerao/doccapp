@@ -84,6 +84,30 @@
               </a>
 
                   </p>
+                  
+                  <br>
+                  <h3 class="text-info">Professor, share your knowledge here!
+                      <br>
+                  </h3>
+                  <p class="text-info">You can now upload study material easily and tag them with topics,  <a id="professorSignIn"class="btn btn-primary" href="#">Sign In</a> here </p>
+                  <script>
+                      $('#professorSignIn').on('click',function(){
+                                               bootbox.dialog({
+                                                              message: "<form id='profSignIn' method='GET' action='http://127.0.0.1:8000/professorSignIn/'>{% csrf_token %} Username:<br><input type='text' name='username'></input><br><br>Password:<br><input type='password' name='password'></input></form>",
+                                                              
+                                                              title: "Sign In",
+                                                              buttons: {
+                                                              main: {
+                                                              label: "Submit",
+                                                              className: "btn-primary",
+                                                              callback: function() {
+                                                              $('#profSignIn').submit();
+                                                              }
+                                                              }
+                                                              }
+                                                              });
+                                               });
+                      </script>
                 </div>
               </td>
               <td align="right">

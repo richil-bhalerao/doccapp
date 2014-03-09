@@ -39,7 +39,7 @@ class Users(object):
     def updateUser(self, value, data):
         print 'In User.update method'
         try:
-            return self.__store.update('user', 'email', value, data)
+            return self.__store.update('user', 'username', value, data)
         except:
             return 'failed'
     
