@@ -15,6 +15,7 @@ import traceback
 from course import Course
 from user import Users
 from session import Session
+from professor import Professors
 
 import json
 from inspect import trace
@@ -27,7 +28,7 @@ from pymongo import *
 courseobj = None
 userobj = None
 sessionobj = None
-
+professorobj = None
 status = None
 
 # A Mongo db JSON Encoder 
@@ -52,8 +53,9 @@ def root():
    
 def setup():
    print '\n**** service initialization ****\n'
-   global courseobj, userobj, sessionobj 
+   global courseobj, userobj, sessionobj, professorobj
    userobj = Users()
+   professorobj = Professors()
    courseobj = Course()
    connection = Connection('localhost', 27017)
    sessionobj = Session(connection.doccdb) 
@@ -71,6 +73,26 @@ def create_user():
     print "----"
     print status
     return status
+
+@route('/professorSignIn', method='PUT')
+def professorSignIn():
+    print 'Checking if user exists..'
+    entity = request.body.read()
+    entity = json.loads(entity)
+    print "username:", entity['username']
+    print professorobj
+    professor = professorobj.getProfessor(entity['username'])
+    print "professor returned: ",  professor
+    if professor!=None and professor['password']==entity['password']:
+        
+        #Also set session id in the browser cookie
+        session_id = sessionobj.start_session(professor['username'] )
+        response.set_cookie("session", session_id)
+        data = {"result": True, "payload": professor}
+    else:
+        data = {"result": False}
+    
+    return MongoEncoder().encode(data)
 
 @route('/signIn', method='PUT')
 def signIn():
@@ -90,6 +112,35 @@ def signIn():
         data = {"result": False}
     
     return MongoEncoder().encode(data)
+
+@route('/getProfile', method='PUT')
+def get_user():
+    print 'You are in get user service'
+    username = ''
+    entity = request.body.read()
+    username = json.loads(entity)
+    try:
+        entity = userobj.getUser(username['username'])
+        print 'ENTITY ---> ', entity
+    except:
+        traceback.print_exc()
+        abort(404, 'User cannot be retrieved')
+    
+    if not entity:
+        abort(404, 'No user with email %s' % email)
+    
+    return MongoEncoder().encode(entity)
+
+@route('/saveProfile', method='POST')
+def saveProfile():
+    print "In save profile"
+    entity = request.body.read()
+    user = json.loads(entity)
+    print "PAYLOAD USER ---> ", user
+    print "USERNAME ---> ", user['username']
+    status = userobj.updateUser(user['username'], user)
+    print "STATUS ---> ", status
+    return status
 
 @route('/courseContentSelection', method='GET')
 def courseContentSelection():
